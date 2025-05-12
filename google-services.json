@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "538253473944",
+    "firebase_url": "https://notive-9d0eb-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "notive-9d0eb",
+    "storage_bucket": "notive-9d0eb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538253473944:android:97eb593fbd56cf852c78ed",
+        "android_client_info": {
+          "package_name": "com.feedingspree1.finalprojectCS409"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "538253473944-8bi9on3rah2tbr1vto3a0hjua8t2ntpk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCOnJSP0CX9dqHQAhfXzxY2Tuz1bp0Uoo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "538253473944-8bi9on3rah2tbr1vto3a0hjua8t2ntpk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
