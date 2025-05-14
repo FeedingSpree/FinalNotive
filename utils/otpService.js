@@ -1,7 +1,6 @@
-// utils/otpService.js
+// utils/otpService.js - Revert to original
 import { supabase } from './supabase';
-import { openInbox } from 'react-native-email-link';
-import { Linking } from 'react-native';
+import { Alert, Clipboard } from 'react-native';
 
 // Generate a random 6-digit OTP
 export const generateOTP = () => {
@@ -69,30 +68,24 @@ export const verifyOTP = async (email, code) => {
   }
 };
 
-// Open email app with OTP info
+// Simple development-only OTP display
 export const sendOTPEmail = async (email, otp) => {
-  // Always log to console for development/debugging
+  // Log to console
   console.log(`[DEVELOPMENT] OTP for ${email}: ${otp}`);
   
+  // Copy to clipboard for easier testing
   try {
-    // Create a mailto link with the OTP
-    const subject = encodeURIComponent('Your Verification Code');
-    const body = encodeURIComponent(`Your verification code is: ${otp}\n\nThis code will expire in 10 minutes.`);
-    const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
-    
-    // Open the email app with the link
-    const canOpen = await Linking.canOpenURL(mailtoLink);
-    if (canOpen) {
-      await Linking.openURL(mailtoLink);
-    } else {
-      // Try to open inbox as a fallback
-      await openInbox();
-    }
-    
-    return true;
-  } catch (error) {
-    console.error('Error opening email app:', error);
-    // Return true anyway so the flow continues with console logs
-    return true;
+    Clipboard.setString(otp);
+  } catch (e) {
+    console.error('Could not copy to clipboard:', e);
   }
+  
+  // Show in alert
+  Alert.alert(
+    "Development Mode",
+    `Your verification code is: ${otp}\n\nThis code has been copied to your clipboard.\n\nIn production, this would be sent to: ${email}`,
+    [{ text: "OK" }]
+  );
+  
+  return true;
 };
